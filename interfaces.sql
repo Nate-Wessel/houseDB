@@ -6,7 +6,7 @@ CREATE TABLE interfaces (
 	circuit text REFERENCES circuits (uid),
 	interface_type text NOT NULL REFERENCES interface_types (short_name),
 	grounded boolean,
-	notes text
+	notes text,
+	rewired boolean,
 	PRIMARY KEY (room, location_in_room, interface_type)
 );
-
