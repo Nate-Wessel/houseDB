@@ -8,5 +8,8 @@ CREATE TABLE interfaces (
 	grounded boolean,
 	notes text,
 	rewired boolean,
+	uid smallserial,
 	PRIMARY KEY (room, location_in_room, interface_type)
 );
+
+CREATE UNIQUE INDEX ON interfaces (uid);
