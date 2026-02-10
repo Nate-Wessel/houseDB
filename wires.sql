@@ -4,5 +4,6 @@ CREATE TABLE wires (
 	gauge smallint,
 	ground boolean DEFAULT TRUE,
 	notes text,
-	CHECK (connects_from != connects_to)
+	CHECK (connects_from != connects_to),
+	PRIMARY KEY (connects_from, connects_to)
 );
