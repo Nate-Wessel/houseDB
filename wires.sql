@@ -1,10 +1,12 @@
 CREATE TABLE wires (
-	connects_from smallint NOT NULL REFERENCES interfaces (uid),
-	connects_to smallint NOT NULL REFERENCES interfaces (uid),
+	uid smallserial PRIMARY KEY,
+	connects_from_breaker text REFERENCES circuits (uid),
+	connects_from_interface smallint REFERENCES interfaces (uid),
+	connects_to_interface smallint NOT NULL REFERENCES interfaces (uid),
 	gauge smallint,
 	conductors smallint NOT NULL DEFAULT 2,
 	ground boolean DEFAULT TRUE,
+	was_fished boolean,
 	notes text,
-	CHECK (connects_from != connects_to),
-	PRIMARY KEY (connects_from, connects_to)
+	CHECK (connects_from_interface != connects_to_interface)
 );
