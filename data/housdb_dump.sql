@@ -2,7 +2,7 @@
 -- PostgreSQL database dump
 --
 
-\restrict oUvNVsOOj1OkO0OlWKoSSX24zk73APY2tcY367cnDbbQOrTIomVksQuCUyKC7Ik
+\restrict jKlO1l2ZAcjfcOOFmCDjtp8Y1YYLjJGCx1xE7kJxVLnqggd5etNzFFHRCf6klbm
 
 -- Dumped from database version 14.22 (Ubuntu 14.22-0ubuntu0.22.04.1)
 -- Dumped by pg_dump version 14.22 (Ubuntu 14.22-0ubuntu0.22.04.1)
@@ -23,7 +23,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: circuits; Type: TABLE; Schema: public; Owner: nate
+-- Name: circuits; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.circuits (
@@ -37,10 +37,8 @@ CREATE TABLE public.circuits (
 );
 
 
-ALTER TABLE public.circuits OWNER TO nate;
-
 --
--- Name: floors; Type: TABLE; Schema: public; Owner: nate
+-- Name: floors; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.floors (
@@ -48,10 +46,8 @@ CREATE TABLE public.floors (
 );
 
 
-ALTER TABLE public.floors OWNER TO nate;
-
 --
--- Name: interface_types; Type: TABLE; Schema: public; Owner: nate
+-- Name: interface_types; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.interface_types (
@@ -59,10 +55,8 @@ CREATE TABLE public.interface_types (
 );
 
 
-ALTER TABLE public.interface_types OWNER TO nate;
-
 --
--- Name: interfaces; Type: TABLE; Schema: public; Owner: nate
+-- Name: interfaces; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.interfaces (
@@ -78,10 +72,8 @@ CREATE TABLE public.interfaces (
 );
 
 
-ALTER TABLE public.interfaces OWNER TO nate;
-
 --
--- Name: spaces; Type: TABLE; Schema: public; Owner: nate
+-- Name: spaces; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.spaces (
@@ -91,10 +83,8 @@ CREATE TABLE public.spaces (
 );
 
 
-ALTER TABLE public.spaces OWNER TO nate;
-
 --
--- Name: interfaces_by_circuit; Type: VIEW; Schema: public; Owner: nate
+-- Name: interfaces_by_circuit; Type: VIEW; Schema: public; Owner: -
 --
 
 CREATE VIEW public.interfaces_by_circuit AS
@@ -113,10 +103,8 @@ CREATE VIEW public.interfaces_by_circuit AS
   ORDER BY (count(DISTINCT ((interfaces.space || interfaces.location_in_space) || interfaces.interface_type))) DESC;
 
 
-ALTER TABLE public.interfaces_by_circuit OWNER TO nate;
-
 --
--- Name: interfaces_uid_seq; Type: SEQUENCE; Schema: public; Owner: nate
+-- Name: interfaces_uid_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.interfaces_uid_seq
@@ -128,17 +116,15 @@ CREATE SEQUENCE public.interfaces_uid_seq
     CACHE 1;
 
 
-ALTER TABLE public.interfaces_uid_seq OWNER TO nate;
-
 --
--- Name: interfaces_uid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nate
+-- Name: interfaces_uid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.interfaces_uid_seq OWNED BY public.interfaces.uid;
 
 
 --
--- Name: panels; Type: TABLE; Schema: public; Owner: nate
+-- Name: panels; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.panels (
@@ -149,10 +135,8 @@ CREATE TABLE public.panels (
 );
 
 
-ALTER TABLE public.panels OWNER TO nate;
-
 --
--- Name: wires; Type: TABLE; Schema: public; Owner: nate
+-- Name: wires; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.wires (
@@ -169,10 +153,8 @@ CREATE TABLE public.wires (
 );
 
 
-ALTER TABLE public.wires OWNER TO nate;
-
 --
--- Name: wires_uid_seq; Type: SEQUENCE; Schema: public; Owner: nate
+-- Name: wires_uid_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.wires_uid_seq
@@ -184,31 +166,29 @@ CREATE SEQUENCE public.wires_uid_seq
     CACHE 1;
 
 
-ALTER TABLE public.wires_uid_seq OWNER TO nate;
-
 --
--- Name: wires_uid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: nate
+-- Name: wires_uid_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.wires_uid_seq OWNED BY public.wires.uid;
 
 
 --
--- Name: interfaces uid; Type: DEFAULT; Schema: public; Owner: nate
+-- Name: interfaces uid; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.interfaces ALTER COLUMN uid SET DEFAULT nextval('public.interfaces_uid_seq'::regclass);
 
 
 --
--- Name: wires uid; Type: DEFAULT; Schema: public; Owner: nate
+-- Name: wires uid; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.wires ALTER COLUMN uid SET DEFAULT nextval('public.wires_uid_seq'::regclass);
 
 
 --
--- Data for Name: circuits; Type: TABLE DATA; Schema: public; Owner: nate
+-- Data for Name: circuits; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.circuits (uid, panel, amps, gfci, afci, voltage) FROM stdin;
@@ -242,7 +222,7 @@ A19B	main	15	f	t	120
 
 
 --
--- Data for Name: floors; Type: TABLE DATA; Schema: public; Owner: nate
+-- Data for Name: floors; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.floors (uid) FROM stdin;
@@ -254,7 +234,7 @@ attic
 
 
 --
--- Data for Name: interface_types; Type: TABLE DATA; Schema: public; Owner: nate
+-- Data for Name: interface_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.interface_types (short_name) FROM stdin;
@@ -274,7 +254,7 @@ appliance
 
 
 --
--- Data for Name: interfaces; Type: TABLE DATA; Schema: public; Owner: nate
+-- Data for Name: interfaces; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.interfaces (space, location_in_space, circuit, interface_type, grounded, notes, rewired, uid, sits_within) FROM stdin;
@@ -386,7 +366,7 @@ upstairs bathroom	south wall (west switch)	11	switch (one of several)	t	controls
 
 
 --
--- Data for Name: panels; Type: TABLE DATA; Schema: public; Owner: nate
+-- Data for Name: panels; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.panels (short_name, description, notes, circuit) FROM stdin;
@@ -396,7 +376,7 @@ subpanel	\N	\N	B12A/B14A
 
 
 --
--- Data for Name: spaces; Type: TABLE DATA; Schema: public; Owner: nate
+-- Data for Name: spaces; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.spaces (short_name, floor, description) FROM stdin;
@@ -429,7 +409,7 @@ attic	attic	\N
 
 
 --
--- Data for Name: wires; Type: TABLE DATA; Schema: public; Owner: nate
+-- Data for Name: wires; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.wires (uid, connects_from_breaker, connects_from_interface, connects_to_interface, gauge, conductors, ground, was_fished, notes) FROM stdin;
@@ -490,21 +470,21 @@ COPY public.wires (uid, connects_from_breaker, connects_from_interface, connects
 
 
 --
--- Name: interfaces_uid_seq; Type: SEQUENCE SET; Schema: public; Owner: nate
+-- Name: interfaces_uid_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.interfaces_uid_seq', 108, true);
 
 
 --
--- Name: wires_uid_seq; Type: SEQUENCE SET; Schema: public; Owner: nate
+-- Name: wires_uid_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.wires_uid_seq', 53, true);
 
 
 --
--- Name: circuits circuits_pkey; Type: CONSTRAINT; Schema: public; Owner: nate
+-- Name: circuits circuits_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.circuits
@@ -512,7 +492,7 @@ ALTER TABLE ONLY public.circuits
 
 
 --
--- Name: floors floors_pkey; Type: CONSTRAINT; Schema: public; Owner: nate
+-- Name: floors floors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.floors
@@ -520,7 +500,7 @@ ALTER TABLE ONLY public.floors
 
 
 --
--- Name: interface_types interface_types_pkey; Type: CONSTRAINT; Schema: public; Owner: nate
+-- Name: interface_types interface_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.interface_types
@@ -528,7 +508,7 @@ ALTER TABLE ONLY public.interface_types
 
 
 --
--- Name: interfaces interfaces_pkey; Type: CONSTRAINT; Schema: public; Owner: nate
+-- Name: interfaces interfaces_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.interfaces
@@ -536,7 +516,7 @@ ALTER TABLE ONLY public.interfaces
 
 
 --
--- Name: panels panels_pkey; Type: CONSTRAINT; Schema: public; Owner: nate
+-- Name: panels panels_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.panels
@@ -544,7 +524,7 @@ ALTER TABLE ONLY public.panels
 
 
 --
--- Name: spaces rooms_pkey; Type: CONSTRAINT; Schema: public; Owner: nate
+-- Name: spaces rooms_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.spaces
@@ -552,7 +532,7 @@ ALTER TABLE ONLY public.spaces
 
 
 --
--- Name: wires wires_pkey1; Type: CONSTRAINT; Schema: public; Owner: nate
+-- Name: wires wires_pkey1; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.wires
@@ -560,14 +540,14 @@ ALTER TABLE ONLY public.wires
 
 
 --
--- Name: interfaces_uid_idx; Type: INDEX; Schema: public; Owner: nate
+-- Name: interfaces_uid_idx; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE UNIQUE INDEX interfaces_uid_idx ON public.interfaces USING btree (uid);
 
 
 --
--- Name: circuits circuits_panel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: circuits circuits_panel_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.circuits
@@ -575,7 +555,7 @@ ALTER TABLE ONLY public.circuits
 
 
 --
--- Name: interfaces interfaces_circuit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: interfaces interfaces_circuit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.interfaces
@@ -583,7 +563,7 @@ ALTER TABLE ONLY public.interfaces
 
 
 --
--- Name: interfaces interfaces_interface_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: interfaces interfaces_interface_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.interfaces
@@ -591,7 +571,7 @@ ALTER TABLE ONLY public.interfaces
 
 
 --
--- Name: interfaces interfaces_room_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: interfaces interfaces_room_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.interfaces
@@ -599,7 +579,7 @@ ALTER TABLE ONLY public.interfaces
 
 
 --
--- Name: interfaces interfaces_sits_within_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: interfaces interfaces_sits_within_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.interfaces
@@ -607,7 +587,7 @@ ALTER TABLE ONLY public.interfaces
 
 
 --
--- Name: panels panels_circuit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: panels panels_circuit_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.panels
@@ -615,7 +595,7 @@ ALTER TABLE ONLY public.panels
 
 
 --
--- Name: spaces rooms_floor_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: spaces rooms_floor_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.spaces
@@ -623,7 +603,7 @@ ALTER TABLE ONLY public.spaces
 
 
 --
--- Name: wires wires_connects_from_breaker_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: wires wires_connects_from_breaker_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.wires
@@ -631,7 +611,7 @@ ALTER TABLE ONLY public.wires
 
 
 --
--- Name: wires wires_connects_from_interface_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: wires wires_connects_from_interface_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.wires
@@ -639,7 +619,7 @@ ALTER TABLE ONLY public.wires
 
 
 --
--- Name: wires wires_connects_to_interface_fkey; Type: FK CONSTRAINT; Schema: public; Owner: nate
+-- Name: wires wires_connects_to_interface_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.wires
@@ -650,5 +630,5 @@ ALTER TABLE ONLY public.wires
 -- PostgreSQL database dump complete
 --
 
-\unrestrict oUvNVsOOj1OkO0OlWKoSSX24zk73APY2tcY367cnDbbQOrTIomVksQuCUyKC7Ik
+\unrestrict jKlO1l2ZAcjfcOOFmCDjtp8Y1YYLjJGCx1xE7kJxVLnqggd5etNzFFHRCf6klbm
 
