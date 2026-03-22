@@ -9,6 +9,7 @@ CREATE TABLE interfaces (
 	notes text,
 	rewired boolean,
 	uid smallserial,
+	sits_within smallint REFERENCES interfaces (uid),
 	PRIMARY KEY (room, location_in_room, interface_type)
 );
 
